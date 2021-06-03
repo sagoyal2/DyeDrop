@@ -121,6 +121,10 @@ Float HaltonSampler::SampleDimension(int64_t index, int dim) const {
         return RadicalInverse(dim, index >> baseExponents[0]);
     else if (dim == 1)
         return RadicalInverse(dim, index / baseScales[1]);
+    else if (dim >= 1000){
+        RNG rng;
+        return rng.UniformFloat();
+    }
     else
         return ScrambledRadicalInverse(dim, index,
                                        PermutationForDimension(dim));

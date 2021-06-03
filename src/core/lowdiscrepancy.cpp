@@ -33,6 +33,7 @@
 
 // core/lowdiscrepancy.cpp*
 #include "lowdiscrepancy.h"
+#include "rng.h"
 
 namespace pbrt {
 
@@ -2481,9 +2482,11 @@ Float RadicalInverse(int baseIndex, uint64_t a) {
     case 1023:
         return RadicalInverseSpecialized<8161>(a);
     default:
-        LOG(FATAL) << StringPrintf("Base %d is >= 1024, the limit of RadicalInverse",
-                                   baseIndex);
-        return 0;
+//LOG(FATAL) << StringPrintf("Base %d is >= 1024, the limit of RadicalInverse",
+//                                   baseIndex);
+	RNG rng;
+	return rng.UniformFloat();
+//return 0;
     }
 }
 
