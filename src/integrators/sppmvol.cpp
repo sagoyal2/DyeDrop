@@ -432,30 +432,30 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
 
                     Vector3f wo = -photonRay.d, wi;
 
-                    // // Sample the participating medium, if present
-                    // MediumInteraction mi;
-                    // if (photonRay.medium) beta *= photonRay.medium->Sample(photonRay, sampler, arena, &mi);
-                    // if (beta.IsBlack()) break;
+                    // Sample the participating medium, if present
+                    MediumInteraction mi;
+                    if (photonRay.medium) beta *= photonRay.medium->Sample(photonRay, sampler, arena, &mi);
+                    if (beta.IsBlack()) break;
 
-                    // // Handle an interaction with a medium or a surface
-                    // if (mi.IsValid()) {
-                    //     // Sample Phase _p_ and direction _wi_ for reflected photon
-                    //     Point2f phaseSample(
-                    //         RadicalInverse(haltonDim, haltonIndex),
-                    //         RadicalInverse(haltonDim + 1, haltonIndex));
-                    //     Float p = mi.phase->Sample_p(wo, &wi, phaseSample);
-                    //     Spectrum f = Spectrum(p);
-                    //     Float scatteringPdf = p;
-                    //     photonRay = mi.SpawnRay(wi);
+                    // Handle an interaction with a medium or a surface
+                    if (mi.IsValid()) {
+                        // Sample Phase _p_ and direction _wi_ for reflected photon
+                        Point2f phaseSample(
+                            RadicalInverse(haltonDim, haltonIndex),
+                            RadicalInverse(haltonDim + 1, haltonIndex));
+                        Float p = mi.phase->Sample_p(wo, &wi, phaseSample);
+                        Spectrum f = Spectrum(p);
+                        Float scatteringPdf = p;
+                        photonRay = mi.SpawnRay(wi);
 
-                    //     Spectrum bnew = beta * f / scatteringPdf;
+                        Spectrum bnew = beta * f / scatteringPdf;
 
-                    //     // Possibly terminate photon path with Russian roulette
-                    //     Float q = std::max((Float)0, 1 - beta.y() / bnew.y());
-                    //     if (RadicalInverse(haltonDim++, haltonIndex) < q) break;
-                    //     beta = bnew / (1 - q);
-                    // }
-                    // else{
+                        // Possibly terminate photon path with Russian roulette
+                        Float q = std::max((Float)0, 1 - beta.y() / bnew.y());
+                        if (RadicalInverse(haltonDim++, haltonIndex) < q) break;
+                        beta = bnew / (1 - q);
+                    }
+                    else{
                         // Compute BSDF at photon intersection point
                         isect.ComputeScatteringFunctions(photonRay, arena, true,
                                                         TransportMode::Importance);
@@ -487,7 +487,7 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
                         if (RadicalInverse(haltonDim++, haltonIndex) < q) break;
                         beta = bnew / (1 - q);
                         photonRay = (RayDifferential)isect.SpawnRay(wi);
-                    // }
+                    }
                 }
                 arena.Reset();
             }, photonsPerIteration, 8192);
