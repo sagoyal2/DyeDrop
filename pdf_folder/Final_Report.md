@@ -65,6 +65,10 @@ As a sanity check we rendered a single with an ink droplet inside:
 
 Render Parameters:
 
+The full resolution is 1900 x 1400, with 2048 halton samples per pixel, 15000 camera iterations and 1000000 photon iterations.
+and 2048 volumetric sppm integrater numiterations.
+
+
 ## Trouble Shooting
 We ran into several problems along the way:
 
