@@ -14,7 +14,7 @@ The dye drop is a beautiful creation that is often the subject of many desktop b
 
 We imagine an exhibit of acrylic paint jets being pushed into a chamber of water in an art museum, while at the near corner, we see a quill dipped in a bottle of ink. We see a drop of dye from the quill diffusing in the glass bowl, and a journal for use of the writing. We did not focus on the minute features of the feather, but rather the volumetric effects of these fluids diffusing in water.
 
-![Exhibit Hall](pdf_folder/exhibit_hall.png)
+![Exhibit Hall](exhibit_hall.png)
 
 ## Ink Splash Scene
 In order to model the splash of ink in the nearby bowl, we discretized the liquid into tiny individual particles, and modeled diffusion through addition of Brownian Motion (acting as a diffusive force), a low gravity (some downward force, but counteracted by a buoyant force), and finally turbulence (to represent the vorticity and the resistance of the water upon the splash. After the simulation with $N = 10^7$ particles, we created a mesh by convolution over the many particles to generate the following model.
@@ -56,7 +56,7 @@ We would like to thank the Xianzhe Zhang, Wen Zhou (CS348B class of 2019) for th
 
 As a sanity check we rendered a single with an ink droplet inside:
 
-![Early Ink Cup](early_ink.png)
+![Early Ink Cup](early_ink_cup.png)
 
 
 # Final Render
