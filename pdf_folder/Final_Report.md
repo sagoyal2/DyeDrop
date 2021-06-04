@@ -8,13 +8,13 @@ by **Samaksh (Avi) Goyal (sagoyal), Ian Madden (iamadden)**.
 ## Inspiration
 The dye drop is a beautiful creation that is often the subject of many desktop backgrounds, artwork, and more. It is also a culmination of several unique and complex fluid dynamical processes, diffusion and turbulence, so the setup of the modeling problem was already very challenging. The material properties of the dye in water is also important: acrylic paint can be shot in a jet-like fashion to have one effect, while a more diffuse, water-color ink drop has an entirely different effect. Our aim was to render this image effectively using the principle of volumetric photon scattering. This would allow us to see the unique behaviors of the medium in scattering light. We hoped that this would generate a few caustic effects, with some coloring effects as well. Finally, we wanted to set this beautiful imagery in the place we believed such an image would properly belong: a modern art exhibition.
 
-#insert inspiration image
+![Inspiration](pdf_folder/true_inspiration.png)
 
 ## Exhibit Hall
 
 We imagine an exhibit of acrylic paint jets being pushed into a chamber of water in an art museum, while at the near corner, we see a quill dipped in a bottle of ink. We see a drop of dye from the quill diffusing in the glass bowl, and a journal for use of the writing. We did not focus on the minute features of the feather, but rather the volumetric effects of these fluids diffusing in water.
 
-#insert exhibit hall
+![Exhibit Hall](pdf_folder/exhibit_hall.png)
 
 ## Ink Splash Scene
 In order to model the splash of ink in the nearby bowl, we discretized the liquid into tiny individual particles, and modeled diffusion through addition of Brownian Motion (acting as a diffusive force), a low gravity (some downward force, but counteracted by a buoyant force), and finally turbulence (to represent the vorticity and the resistance of the water upon the splash. After the simulation with $N = 10^7$ particles, we created a mesh by convolution over the many particles to generate the following model.
@@ -26,13 +26,13 @@ We then moved on to creating the other objects of the scene:
  -  **Inkwell** We modeled the inkwell with a cylinder mated to a cube, with some smoothing and remeshing in order to create the appearance.
  - **Journal** The model of a journal was borrowed and downloaded (free) courtesy of TurboSquid, "Pen and Journal."
 
-#insert ink splash
+![Ink Splash](pdf_folder/ink_splash.png)
 
 ## Smoke Vorticity
 We developed the large-scale image of the smoke in the scene by running a longer simulation of smoke (with diffusive and Brownian effects, as well as vorticity) [1]. We created a 2D image through this, and developed the painting through placement on a plane as a 2D texture.
 
 
-#insert smoke vorticity
+![Smoke Vorticity](pdf_folder/smoke_vorticity.png)
 
 ## Paint Jet Through Water
 In order to model the paint jet pushing through the water, we actually combined the knowledge of smoke and ink drop. The model of water was still based on a discretization into particles, and the same turbulence addition still applied. However, the rising behavior was inherited through a "forcing" through the smoke simulation.
@@ -40,7 +40,7 @@ In order to model the paint jet pushing through the water, we actually combined 
 # Volumetric Photon Mapping Implementation
 
 
-#insert teapot4by4
+![Teapots](pdf_folder/teapot4by4.png)
 
 
 We implemented volumetric photon mapping to make the realistic lighting effects of light scattering in the glass bowl with a scatting liquid inside. We drew inspiration from significant prior work on the subject [2, 3]. Our implementation concatenates the stochastic progressive photon mapping (SPPM) integrator found in PBRT `sppm.cpp/h` and the volumetric path tracing routine `volpath.cpp/h`. 
@@ -56,7 +56,14 @@ We would like to thank the Xianzhe Zhang, Wen Zhou (CS348B class of 2019) for th
 
 As a sanity check we rendered a single with an ink droplet inside:
 
-#early_ink_cup
+![Early Ink Cup](pdf_folder/early_ink.png)
+
+
+# Final Render
+![Final Render](pdf_folder/final_render_submission.png)
+
+
+Render Parameters:
 
 # Trouble Shooting
 We ran into several problems along the way:
