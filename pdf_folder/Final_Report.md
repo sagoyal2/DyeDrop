@@ -32,7 +32,7 @@ We then moved on to creating the other objects of the scene:
 We developed the large-scale image of the smoke in the scene by running a longer simulation of smoke (with diffusive and Brownian effects, as well as vorticity) [1]. We created a 2D image through this, and developed the painting through placement on a plane as a 2D texture.
 
 
-![Smoke Vorticity](smoke_vorticity.png)
+![Smoke Vorticity](smoke_voriticy.png)
 
 ## Paint Jet Through Water
 In order to model the paint jet pushing through the water, we actually combined the knowledge of smoke and ink drop. The model of water was still based on a discretization into particles, and the same turbulence addition still applied. However, the rising behavior was inherited through a "forcing" through the smoke simulation.
