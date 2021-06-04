@@ -165,6 +165,7 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
                     RayDifferential ray;
                     Spectrum beta =
                         camera->GenerateRayDifferential(cameraSample, &ray);
+                    
                     if (beta.IsBlack())
                         continue;
                     ray.ScaleDifferentials(invSqrtSPP);
@@ -188,26 +189,14 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
                         SurfaceInteraction isect;
                         bool foundIntersection = scene.Intersect(ray, &isect);
 
-                        if (!foundIntersection) {
-                            // Accumulate light contributions for ray with no
-                            // intersection
-                            for (const auto &light : scene.infiniteLights)
-                                pixel.Ld += beta * light->Le(ray);
-                            break;
-                        }
-
-
                         // Sample the participating medium, if present
                         MediumInteraction mi;
                         if (ray.medium) beta *= ray.medium->Sample(ray, *tileSampler, arena, &mi);
                         if (beta.IsBlack()) break;
 
-			//bool inside_ = false;
-
                         // Handle an interaction with a medium or a surface
                         if(mi.IsValid()){
-                            //printf("inside medium!\n");
-				// Handle scattering at point in medium for (sppm) volumetric path tracer
+                            // Handle scattering at point in medium for (sppm) volumetric path tracer
                             const Distribution1D *lightDistrib = 
                                 lightDistribution->Lookup(mi.p);
                             
@@ -216,18 +205,26 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
 
                             Vector3f wo = -ray.d, wi;
 
-                            if(depth == maxDepth - 1){
+                            // if(depth == maxDepth - 1){
                                  const PhaseFunction &phase = *mi.phase;
                                  // printf("hmm ok entering on max depth?\n");
                                  pixel.vp = {mi.p, wo, NULL, &phase, false, beta};
                                  break;
-                            }
+                            // }
 
-                            mi.phase->Sample_p(wo, &wi, sampler.Get2D());
-                            ray = mi.SpawnRay(wi);
-                            specularBounce = false;
+                            // mi.phase->Sample_p(wo, &wi, sampler.Get2D());
+                            // ray = mi.SpawnRay(wi);
+                            // specularBounce = false;
                         }else{
                             // Process SPPM camera ray intersection
+
+                            if (!foundIntersection) {
+                                // Accumulate light contributions for ray with no
+                                // intersection
+                                for (const auto &light : scene.infiniteLights)
+                                    pixel.Ld += beta * light->Le(ray);
+                                break;
+                            }
 
                             // Compute BSDF at SPPM camera ray intersection
                             isect.ComputeScatteringFunctions(ray, arena, true);
@@ -243,6 +240,7 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
                             Vector3f wo = -ray.d;
                             if (depth == 0 || specularBounce)
                                 pixel.Ld += beta * isect.Le(wo);
+                            
                             pixel.Ld +=
                                 beta * UniformSampleOneLight(isect, scene, arena,
                                                             *tileSampler);
@@ -279,6 +277,8 @@ void SPPMVolIntegrator::Render(const Scene &scene) {
                                 ray = (RayDifferential)isect.SpawnRay(wi);
                             }
                         }
+
+                        //std::cout << "pixel.Ld: " << pixel.Ld.ToString() << std::endl;
                     }
                 }
             }, nTiles);
