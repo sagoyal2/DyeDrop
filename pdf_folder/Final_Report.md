@@ -86,6 +86,7 @@ Ian Madden: Set up Blender scene, fluid simulation and meshing, material propert
 
 Samaksh (Avi) Goyal: Implemented volumetric photon mapping, set up AWS to render image, advised in scene development
 
+[Code](https://github.com/sagoyal2/DyeDrop)
 
 ## Sources
 [1] Kim, T., Thürey, N., James, D., & Gross, M. (2008). Wavelet turbulence for fluid simulation. _ACM Transactions on Graphics (TOG)_, _27_(3), 1-6.
