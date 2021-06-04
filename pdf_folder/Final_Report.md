@@ -60,7 +60,7 @@ As a sanity check we rendered a single with an ink droplet inside:
 
 
 # Final Render
-![Final Render](final_render_submission.png)
+![Final Render](maybe_submit.png)
 
 
 Render Parameters:
