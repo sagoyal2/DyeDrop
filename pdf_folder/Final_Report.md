@@ -37,7 +37,7 @@ We developed the large-scale image of the smoke in the scene by running a longer
 ## Paint Jet Through Water
 In order to model the paint jet pushing through the water, we actually combined the knowledge of smoke and ink drop. The model of water was still based on a discretization into particles, and the same turbulence addition still applied. However, the rising behavior was inherited through a "forcing" through the smoke simulation.
 
-# Volumetric Photon Mapping Implementation
+## Volumetric Photon Mapping Implementation
 
 
 ![Teapots](teapot4by4.png)
@@ -65,7 +65,7 @@ As a sanity check we rendered a single with an ink droplet inside:
 
 Render Parameters:
 
-# Trouble Shooting
+## Trouble Shooting
 We ran into several problems along the way:
 
 - We had trouble rendering our high resolution image in a reasonable amount of time locally so we shifted an AWS EC2 instance with `96` virtual cores.
@@ -75,7 +75,7 @@ We ran into several problems along the way:
 - converting blender to pbrt issues?
 
 
-# Distribution of Work
+## Distribution of Work
 
 We were both equally involved in the scene setup, story-boarding and implementation of rendering strategies. We meet collaboratively on long zoom calls.
 
@@ -84,7 +84,7 @@ Ian Madden: Set up Blender scene, fluid simulation and meshing, material propert
 Samaksh (Avi) Goyal: Implemented volumetric photon mapping, set up AWS to render image, advised in scene development
 
 
-# Sources
+## Sources
 [1] Kim, T., Thürey, N., James, D., & Gross, M. (2008). Wavelet turbulence for fluid simulation. _ACM Transactions on Graphics (TOG)_, _27_(3), 1-6.
 
 [2] Henrik Wann Jensen. 2001. Realistic Image Synthesis Using Photon Mapping. A. K. Peters, Ltd., Natick, MA,
