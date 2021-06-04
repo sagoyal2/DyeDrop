@@ -71,15 +71,14 @@ We ran into several problems along the way:
 - We had trouble rendering our high resolution image in a reasonable amount of time locally so we shifted an AWS EC2 instance with `96` virtual cores.
 -  We were unable to render images with `10k+` camera ray iterations, so to overcome with Matt suggested we take advantage of the `cropwindow` argument on the `Film` attribute and use `imagtool assemble` to gather cropped images. This idea worked perfectly.
 - The radius parameter was especially tricky to set accurately in our `sppmvol.cpp/h` implementation. We found that an initial condition of `radius = 0.2` gave the best results.
-- fluid issues?
-- converting blender to pbrt issues?
+- There were many issues with accurate fluid simulation, and porting this over to PBRT. Because there was no clear way to take advantage of the "GridDensityMedium" that was used in other implementations of smoke. As a result, it was necessary to generate a mesh through blender instead of using a density. This necessitated the use of a discretized particle view of liquid and smoke rather than a density view. Material properties, as a result, also had to be done manually as well.
 
 
 ## Distribution of Work
 
 We were both equally involved in the scene setup, story-boarding and implementation of rendering strategies. We meet collaboratively on long zoom calls.
 
-Ian Madden: Set up Blender scene, fluid simulation and meshing, material properties, and camera settings
+Ian Madden: Set up Blender scene, fluid simulation and meshing, material properties, and camera settings, debugged volumetric photon mapping code
 
 Samaksh (Avi) Goyal: Implemented volumetric photon mapping, set up AWS to render image, advised in scene development
 
