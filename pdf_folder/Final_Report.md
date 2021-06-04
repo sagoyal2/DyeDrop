@@ -8,7 +8,7 @@ by **Samaksh (Avi) Goyal (sagoyal), Ian Madden (iamadden)**.
 ## Inspiration
 The dye drop is a beautiful creation that is often the subject of many desktop backgrounds, artwork, and more. It is also a culmination of several unique and complex fluid dynamical processes, diffusion and turbulence, so the setup of the modeling problem was already very challenging. The material properties of the dye in water is also important: acrylic paint can be shot in a jet-like fashion to have one effect, while a more diffuse, water-color ink drop has an entirely different effect. Our aim was to render this image effectively using the principle of volumetric photon scattering. This would allow us to see the unique behaviors of the medium in scattering light. We hoped that this would generate a few caustic effects, with some coloring effects as well. Finally, we wanted to set this beautiful imagery in the place we believed such an image would properly belong: a modern art exhibition.
 
-![Inspiration](pdf_folder/true_inspiration.png)
+![Inspiration](true_inspiration.png)
 
 ## Exhibit Hall
 
