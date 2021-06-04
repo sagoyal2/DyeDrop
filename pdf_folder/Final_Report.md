@@ -26,13 +26,13 @@ We then moved on to creating the other objects of the scene:
  -  **Inkwell** We modeled the inkwell with a cylinder mated to a cube, with some smoothing and remeshing in order to create the appearance.
  - **Journal** The model of a journal was borrowed and downloaded (free) courtesy of TurboSquid, "Pen and Journal."
 
-![Ink Splash](pdf_folder/ink_splash.png)
+![Ink Splash](ink_splash.png)
 
 ## Smoke Vorticity
 We developed the large-scale image of the smoke in the scene by running a longer simulation of smoke (with diffusive and Brownian effects, as well as vorticity) [1]. We created a 2D image through this, and developed the painting through placement on a plane as a 2D texture.
 
 
-![Smoke Vorticity](pdf_folder/smoke_vorticity.png)
+![Smoke Vorticity](smoke_vorticity.png)
 
 ## Paint Jet Through Water
 In order to model the paint jet pushing through the water, we actually combined the knowledge of smoke and ink drop. The model of water was still based on a discretization into particles, and the same turbulence addition still applied. However, the rising behavior was inherited through a "forcing" through the smoke simulation.
@@ -40,7 +40,7 @@ In order to model the paint jet pushing through the water, we actually combined 
 # Volumetric Photon Mapping Implementation
 
 
-![Teapots](pdf_folder/teapot4by4.png)
+![Teapots](teapot4by4.png)
 
 
 We implemented volumetric photon mapping to make the realistic lighting effects of light scattering in the glass bowl with a scatting liquid inside. We drew inspiration from significant prior work on the subject [2, 3]. Our implementation concatenates the stochastic progressive photon mapping (SPPM) integrator found in PBRT `sppm.cpp/h` and the volumetric path tracing routine `volpath.cpp/h`. 
@@ -56,11 +56,11 @@ We would like to thank the Xianzhe Zhang, Wen Zhou (CS348B class of 2019) for th
 
 As a sanity check we rendered a single with an ink droplet inside:
 
-![Early Ink Cup](pdf_folder/early_ink.png)
+![Early Ink Cup](early_ink.png)
 
 
 # Final Render
-![Final Render](pdf_folder/final_render_submission.png)
+![Final Render](final_render_submission.png)
 
 
 Render Parameters:
