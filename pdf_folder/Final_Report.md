@@ -56,7 +56,7 @@ We would like to thank the Xianzhe Zhang, Wen Zhou (CS348B class of 2019) for th
 
 
 # Final Render
-![Final Render](with_lr_fix.png)
+![Final Render](final_submission_photo.png)
 
 
 Render Parameters:
