@@ -1,4 +1,4 @@
-pbrt, Version 3
+pbrt, Version 3 (Go to pdf_folder/Final_Report.pdf to see project details)
 ===============
 
 [![Build Status](https://travis-ci.org/mmp/pbrt-v3.svg?branch=master)](https://travis-ci.org/mmp/pbrt-v3)
