@@ -54,10 +54,6 @@ During the second phase of SPPM when we are shooting rays from the light source 
 
 We would like to thank the Xianzhe Zhang, Wen Zhou (CS348B class of 2019) for their provided explainations of the above process - this made debugging easier.
 
-As a sanity check we rendered a single with an ink droplet inside:
-
-![Early Ink Cup](early_ink_cup.png)
-
 
 # Final Render
 ![Final Render](with_lr_fix.png)
