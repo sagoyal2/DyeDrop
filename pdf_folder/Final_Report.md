@@ -80,7 +80,7 @@ We were both equally involved in the scene setup, story-boarding and implementat
 
 Ian Madden: Set up Blender scene, fluid simulation and meshing, material properties, and camera settings, debugged volumetric photon mapping code
 
-Samaksh (Avi) Goyal: Implemented volumetric photon mapping, set up AWS to render image, advised in scene development
+Samaksh (Avi) Goyal: Implemented volumetric photon mapping, set up AWS to render image, advised in scene development, set scattering coefficents
 
 [Code](https://github.com/sagoyal2/DyeDrop)
 
